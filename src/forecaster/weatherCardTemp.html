@@ -1,0 +1,16 @@
+<div ng-switch="state">
+  <div ng-switch-when="error">
+    <div>Please enter a valid ZIP code.  If the problem persists the service may be down.</div>
+    <div><button ng-click="$parent.clear()">Clear</button></div>
+  </div>
+  <div ng-switch-when="display">
+    <div>City: {{$parent.weather.name}}</div>
+    <div>Temp: {{$parent.weather.main.temp}}&#8457</div>
+    <div>Status: {{$parent.weather.weather[0].main}}</div>
+    <div><button ng-click="clear()">Clear</button></div>
+  </div>
+  <div ng-switch-default>
+    <input ng-model="$parent.searchBy" placeholder="Zip Code" type="number"></input><button ng-click="getWeather()">Go!</button>
+    <br />{{error}}
+  </div>
+</div>

@@ -8,29 +8,11 @@ export default class homeController {
     this.$log.log('app initialized');
     this.$scope.searchBy = "";
     this.$scope.error = "";
+    this.$scope.weatherCards = [];
 
-    this.$scope.getWeather = ()=>{
-      if(this.displayWeather){
-       this.displayWeather = false;
-     }
-     this.$timeout(this.$scope.checkInput);
-    }
-
-    this.$scope.checkInput = ()=>{
-      if(this.$scope.searchBy.toString().length!==5){
-        this.$scope.error = "You must enter a 5 digit zip code."
-        this.$scope.displayWeather = false;
-      }
-      else {
-        this.$scope.error = ""
-        this.$scope.displayWeather = true;
-      }
-    }
-
-    this.$scope.clear = ()=>{
-      this.$scope.displayWeather = false;
-      this.$scope.searchBy = "";
-      this.$scope.error = "";
+    this.$scope.addCard = ()=>{
+      if(this.$scope.weatherCards.length<3)
+        this.$scope.weatherCards.push(Math.random());
     }
   }
 }
