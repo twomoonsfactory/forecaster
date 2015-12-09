@@ -2,6 +2,7 @@ import angular from 'angular';
 import weatherCard from './weatherCard';
 import zipCodeService from './zipCodeService';
 import forecastService from './forecastService';
+import styles from './styles.css';
 
 angular.module('forecaster', [])
   .directive('weatherCard', weatherCard.directiveFactory)
