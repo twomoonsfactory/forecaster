@@ -60,6 +60,12 @@ class weatherCardController{
       this.$scope.state = this.$scope.states.entry;
     }
 
+    this.$scope.checkInput = (keyEvent)=>{
+      if(keyEvent.which===13){
+        this.$scope.getWeather();
+      }
+    }
+
     this.$scope.$watch('searchBy', (newVal, oldVal) => {
       if(newVal)
         this.$scope.searchBy = newVal.toString().length>5 ? oldVal : newVal;

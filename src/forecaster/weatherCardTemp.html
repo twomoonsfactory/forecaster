@@ -11,7 +11,7 @@
       <div><button ng-click="clear()">Clear</button></div>
     </div>
     <div ng-switch-default>
-      <input ng-model="$parent.searchBy" placeholder="Zip Code" type="number"></input><button ng-click="getWeather()">Go!</button>
+      <input ng-model="$parent.searchBy" ng-keypress="checkInput($event)" placeholder="Zip Code" type="number"></input><button ng-click="getWeather()">Go!</button>
       <br />{{error}}
     </div>
   </div>
