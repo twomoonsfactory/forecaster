@@ -1,6 +1,6 @@
 <div>
   Get your weather report by entering your zip-code and clicking <strong>Go!</strong>
 </div>
-<input ng-model="home.searchBy" placeholder="Zip Code" type='number'></input><button ng-click="home.getWeather()">Go!</button>{{home.error}}
-<weather-card ng-if="home.displayWeather" zip="home.searchBy"></weather-card>
-<div><button ng-click="home.clear()">Clear</button></div>
+<input ng-model="searchBy" placeholder="Zip Code" type='number'></input><button ng-click="getWeather()">Go!</button>{{home.error}}
+<weather-card ng-if="displayWeather" zip="searchBy"></weather-card>
+<div><button ng-click="clear()">Clear</button></div>

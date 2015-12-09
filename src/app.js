@@ -17,7 +17,6 @@ ngModule.config(($stateProvider, $urlRouterProvider, viewStates)=>{
     .state(viewStates.home, {
       url: '',
       template: require('./homepage/homeTemplate.html'),
-      controller: 'homeController',
-      controllerAs: 'home'
+      controller: 'homeController'
     });
 })

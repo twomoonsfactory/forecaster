@@ -1,33 +1,72 @@
 export default class homeController {
-  constructor($log, $timeout){
+  constructor($log, $timeout, $scope){
     this.$log = $log;
     this.$timeout = $timeout;
-    this.test = true;
-    this.displayWeather = false;
+    this.$scope = $scope;
+    this.$scope.test = true;
+    this.$scope.displayWeather = false;
     this.$log.log('app initialized');
-    this.searchBy = "";
-    this.error = "";
-  }
-  getWeather(){
-    if(this.displayWeather){
-     this.displayWeather = false;
-   }
-   this.$timeout(this.checkInput.bind(this));
-  }
-  checkInput(){
-    if(this.searchBy.toString().length!==5){
-      this.error = "You must enter a 5 digit zip code."
-      this.displayWeather = false;
+    this.$scope.searchBy = "";
+    this.$scope.error = "";
+
+    this.$scope.getWeather = ()=>{
+      if(this.displayWeather){
+       this.displayWeather = false;
+     }
+     this.$timeout(this.$scope.checkInput);
     }
-    else {
-      this.error = ""
-      this.displayWeather = true;
+
+    this.$scope.checkInput = ()=>{
+      if(this.$scope.searchBy.toString().length!==5){
+        this.$scope.error = "You must enter a 5 digit zip code."
+        this.$scope.displayWeather = false;
+      }
+      else {
+        this.$scope.error = ""
+        this.$scope.displayWeather = true;
+      }
     }
-  }
-  clear(){
-    this.displayWeather = false;
-    this.searchBy = "";
-    this.error = "";
+
+    this.$scope.clear = ()=>{
+      this.$scope.displayWeather = false;
+      this.$scope.searchBy = "";
+      this.$scope.error = "";
+    }
   }
 }
-homeController.$inject = ['$log', '$timeout'];
+homeController.$inject = ['$log', '$timeout', '$scope'];
+
+// This works as well, though you need to use "ControllerAS" to successfully bind it.
+// export default class homeController {
+//   constructor($log, $timeout){
+//     this.$log = $log;
+//     this.$timeout = $timeout;
+//     this.test = true;
+//     this.displayWeather = false;
+//     this.$log.log('app initialized');
+//     this.searchBy = "";
+//     this.error = "";
+//   }
+//   getWeather(){
+//     if(this.displayWeather){
+//      this.displayWeather = false;
+//    }
+//    this.$timeout(this.checkInput.bind(this));
+//   }
+//   checkInput(){
+//     if(this.searchBy.toString().length!==5){
+//       this.error = "You must enter a 5 digit zip code."
+//       this.displayWeather = false;
+//     }
+//     else {
+//       this.error = ""
+//       this.displayWeather = true;
+//     }
+//   }
+//   clear(){
+//     this.displayWeather = false;
+//     this.searchBy = "";
+//     this.error = "";
+//   }
+// }
+// homeController.$inject = ['$log', '$timeout'];
